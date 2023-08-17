@@ -1,0 +1,703 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Git &amp; GitHub</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="35318948-97bf-478b-b06a-8f4c460c5ea2" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1654277041218-84424c78f0ae?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 43.08%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/git_orange.svg"/></div><h1 class="page-title">Git &amp; GitHub</h1><p class="page-description"></p></header><div class="page-body"><p id="4c200760-846b-49f2-a957-4674b5df7d17" class="">
+</p><h1 id="e506e36c-b049-45f1-92fd-ecec5a3313d2" class="">What is Git &amp; GitHub?</h1><p id="a30cdd4d-bbb0-452d-b8fe-cc59077b64da" class="">let&#x27;s use an analogy to understand it perfectly:</p><p id="7e806235-6551-42b8-ae47-0a1d7ccb272d" class="">Imagine you&#x27;re working on a big puzzle, and you want a way to save your progress and also share it with friends.</p><p id="bcb0d584-23bd-4531-8b0e-2f4f0954a824" class=""><strong>Git</strong> is like a magic photo camera. Every time you add some pieces to the puzzle and feel good about it, you take a picture with this camera. If you ever mess up, you can always go back to any of your previous photos and start from there. This camera helps you keep track of all the changes you made to your puzzle.</p><p id="82da048a-230d-4ed1-91c1-45b4879f59ee" class=""><strong>GitHub</strong> is like a public gallery where you can hang your puzzle photos for others to see. Friends can come, check out your puzzle, and even help by adding pieces. They can also show you their puzzles and get your help. It&#x27;s a place where everyone shares and collaborates on their projects.</p><p id="14a69d04-e649-44f9-85cc-5350758c2ad0" class="">So, <strong>Git</strong> helps you manage and track your project changes, while <strong>GitHub</strong> is a platform where these projects are shared and collaborated on with others.</p><p id="7f273ae4-fdc4-41b9-8b25-62ad4ade31cd" class="">
+</p><h2 id="a490d27d-3e17-41cb-8edc-6efd8d887d5e" class="">GitHub Common Commands</h2><p id="33f8aa61-dbb3-42ab-b2d2-860483296abe" class="">The selected text lists common commands for using Git, a version control system for software development. The commands are organized by category, including setup, making changes, branching, updating and undoing, and miscellaneous. The commands listed include initializing a new Git repository, staging and committing changes, creating and switching branches, fetching and merging changes from a remote repository, and displaying the commit history and changes made to files.</p><ul id="030f10bd-6052-4529-8ec9-7a52290df661" class="toggle"><li><details open=""><summary>Meanings of some git statements</summary><p id="71edadda-7992-41e7-b440-be876d6e63d0" class="">Repository = Folder</p><p id="2ef98144-3f59-4767-ab1a-fddf8771640b" class="">Commit  =  Save</p><p id="c6ddcaf9-e7ce-4a36-8a7f-17e8cd6bb76e" class="">Fork  =  Complete Copy</p><p id="335bac56-9bb1-4a46-bc59-860e7bdd0fa6" class="">GitHub Issues = Complaint</p></details></li></ul><h2 id="6c8477f6-e730-4cd4-ae75-bdf3d9a72b30" class="">Setup</h2><ul id="abc97099-6265-490c-9ab9-c8f689ec3852" class="bulleted-list"><li style="list-style-type:disc"><code>git init</code>: Initializes a new Git repository in the current directory.</li></ul><ul id="56a9c6d3-72f5-4f3e-925e-dd4638c47f51" class="bulleted-list"><li style="list-style-type:disc"><code>git clone [repository]</code>: Creates a local copy of an existing repository.</li></ul><ul id="dc392117-4a19-4f2a-9c7f-645aa8714fb1" class="bulleted-list"><li style="list-style-type:disc"><code>git config --global user.name &quot;[name]&quot;</code>: Sets the name associated with your Git commits.</li></ul><ul id="c8e27332-7614-4c1e-b8cd-7d33f65080bd" class="bulleted-list"><li style="list-style-type:disc"><code>git config --global user.email &quot;[email address]&quot;</code>: Sets the email address associated with your Git commits.</li></ul><ul id="974b6d99-fb3b-4998-9df8-37a60db2947b" class="bulleted-list"><li style="list-style-type:disc"><code>git remote add origin [repository URL]</code>: Links the local repository to the remote repository.</li></ul><h2 id="bf557b58-75d5-415a-a2ae-b09e52a970c0" class="">Making Changes</h2><ul id="fd6098ed-95b7-43c1-be58-31cdcecdb50f" class="bulleted-list"><li style="list-style-type:disc"><code>git status</code>: Displays the status of the Git repository.</li></ul><ul id="7b48950c-f1bc-4ec1-b79b-94bf7c52ac90" class="bulleted-list"><li style="list-style-type:disc"><code>git add [file]</code>: Stages a file to be committed.</li></ul><ul id="f8c1f3bd-6e65-4156-96df-e58ceaf00eaf" class="bulleted-list"><li style="list-style-type:disc"><code>git add .</code>: Stages all changes in the working directory to be committed.</li></ul><ul id="43606f31-ebff-4c5d-981f-45deb9121ec1" class="bulleted-list"><li style="list-style-type:disc"><code>git commit -m &quot;[commit message]&quot;</code>: Commits changes to the repository with a message.</li></ul><ul id="a16dd34c-9ad9-4f01-8c48-df2f14db11a2" class="bulleted-list"><li style="list-style-type:disc"><code>git push</code>: Uploads local changes to the remote repository.</li></ul><h2 id="5fc40c68-108c-42bf-af56-ea0b58823382" class="">Branching</h2><ul id="2662295f-8fb7-462b-bbb6-e201a708d854" class="bulleted-list"><li style="list-style-type:disc"><code>git branch</code>: Lists all branches in the repository.</li></ul><ul id="ba560284-6a44-4950-b469-ba6c81c08c74" class="bulleted-list"><li style="list-style-type:disc"><code>git branch [branch name]</code>: Creates a new branch.</li></ul><ul id="0d335736-d43d-453c-83cd-42b1a57a379a" class="bulleted-list"><li style="list-style-type:disc"><code>git checkout [branch name]</code>: Switches to a different branch.</li></ul><ul id="2b9a461c-40a3-43b1-87dc-909f2d79449f" class="bulleted-list"><li style="list-style-type:disc"><code>git merge [branch name]</code>: Merges a branch into the current branch.</li></ul><ul id="6aee4f4b-37a7-4770-bd91-3563bbf237d7" class="bulleted-list"><li style="list-style-type:disc"><code>git branch -d [branch name]</code> Delete a branch</li></ul><ul id="de9738f9-32ea-46c3-a66a-50c401823693" class="bulleted-list"><li style="list-style-type:disc"><code>git push origin --delete [branch name]</code> Delete a remote branch</li></ul><h2 id="67ff391a-76e4-4fe7-8a12-9afa428207c2" class="">Updating and Undoing</h2><ul id="2703f552-a4a5-41d4-8ebe-e250f397b2e0" class="bulleted-list"><li style="list-style-type:disc"><code>git pull</code>: Fetches and merges changes from the remote repository.</li></ul><ul id="b5e87176-38ae-4709-a0c9-0954f4b1cb6f" class="bulleted-list"><li style="list-style-type:disc"><code>git reset</code>: Unstages changes in the staging area.</li></ul><ul id="00c6c2ba-869d-4aca-874c-f052f06ea8b1" class="bulleted-list"><li style="list-style-type:disc"><code>git revert [commit hash]</code>: Undoes a commit.</li></ul><ul id="feae08b6-45b1-4745-b1d5-13afdd17e5ed" class="bulleted-list"><li style="list-style-type:disc"><code>git reset --hard [commit hash]</code>: Resets to a specific commit.</li></ul><h2 id="7b1e06f7-0e7f-48f6-bd43-49401a1521c2" class="">Miscellaneous</h2><ul id="4f3cead6-dfdc-4f2c-be79-f6bdb06d57bc" class="bulleted-list"><li style="list-style-type:disc"><code>git log</code>: Displays the commit history of the repository.</li></ul><ul id="0b885321-b996-427f-8822-eb7c8f538f94" class="bulleted-list"><li style="list-style-type:disc"><code>git log --summary</code>View changes (detailed)</li></ul><ul id="ee3bd521-971e-455a-bd29-2ed020125583" class="bulleted-list"><li style="list-style-type:disc"><code>git log --oneline</code>View changes (briefly)</li></ul><ul id="516fcd7d-48d6-464d-aec7-67211e0659ea" class="bulleted-list"><li style="list-style-type:disc"><code>git diff [file]</code>: Displays changes made to a file.</li></ul><ul id="9d9af676-fbc2-4d31-8d1d-4ac0ec7d7e50" class="bulleted-list"><li style="list-style-type:disc"><code>git diff [source branch] [target branch]</code>Preview changes before merging</li></ul><ul id="9f2a7b9e-1b20-4c95-a25c-1661f8435805" class="bulleted-list"><li style="list-style-type:disc"><code>git remote -v</code>: Displays the remote repositories connected to the local repository.</li></ul><ul id="c87628ac-d3c0-4b88-a19a-0168efcdad42" class="bulleted-list"><li style="list-style-type:disc"><code>git rm -r [file-name.txt]</code> Remove a file (or folder)
+</li></ul><p id="71067c9e-d787-44ca-b394-0d14b347f6e0" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Understand Git Commands and Concept in easy words</summary><div class="indented"><p id="1bd9d3a1-5ee8-480b-8d3a-9833cd7a85dc" class="">
+</p><ul id="3034384b-8a38-4fd2-b230-977d04b88e10" class="bulleted-list"><li style="list-style-type:disc"><code>git init</code> -  Allows you to run any git commands on that folder.</li></ul><ul id="7183a262-d865-4de5-af9e-b4017ba6538f" class="bulleted-list"><li style="list-style-type:disc"><code>git remote </code> -  Setting address of the location where the changes will be pushed too.</li></ul><ul id="aebf08cb-7842-433a-958a-c50fcdda1f34" class="bulleted-list"><li style="list-style-type:disc"><code>git add .</code> -  Add every file in git tracking zone.</li></ul><ul id="384e71cc-50a7-496f-a509-bf3f3c0fa8ca" class="bulleted-list"><li style="list-style-type:disc"><code>git commit -m &quot;message&quot;</code> -  stages the files to get pushed on next “pushed command”.</li></ul><ul id="fc05ca9a-2a0f-4735-bbb1-a1a2cd7f739e" class="bulleted-list"><li style="list-style-type:disc"><code>git status</code> -  Shows the current tracked and untracked files.</li></ul><ul id="465b60b4-5bd1-43db-a139-8caa0ad2ed2a" class="bulleted-list"><li style="list-style-type:disc"><code>git reset</code> -  Makes all files untracked.</li></ul><ul id="e363ccd9-fbb1-4c72-9eb2-24a7b3641a88" class="bulleted-list"><li style="list-style-type:disc"><code>git log</code> -  shows the hash code and details about the recent commit.</li></ul><ul id="d8003d29-592d-4ff7-a642-934b63d0d17b" class="bulleted-list"><li style="list-style-type:disc"><code>git clone [repository]</code> -  Clone/copies the git files from internet to your computer.</li></ul><ul id="9bf97eaf-57c6-4dd7-a283-3d7e427d3229" class="bulleted-list"><li style="list-style-type:disc"><code>git branch</code> - Shows all branches.</li></ul><p id="100b7f3a-9261-40ad-a1e9-a5d7f6edc5c2" class="">
+</p><p id="62cac340-bdb7-435d-b8a8-62855139ce7a" class="">
+</p><p id="b08d0add-09dc-42e1-9e6e-bfb1d06db53b" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Let’s make it more easier to understand</summary><div class="indented"><ul id="ccb7c4c8-1ce1-46ee-a2f5-f2f3e5241d6e" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid"><mark class="highlight-default"><strong>Commiting and Pushing changes on internet:</strong></mark></span></summary><ul id="b54ce79e-7b8f-40bb-9e47-1d343b22d4ac" class="bulleted-list"><li style="list-style-type:disc"><code>git add .</code> -  to add all files</li></ul><ul id="ce9609ca-cc51-4976-a5d0-b1e71b6174e8" class="bulleted-list"><li style="list-style-type:disc"><code>git commit -m &quot;message&quot;</code> - to commit</li></ul><ul id="b7081a25-2e37-4cfe-b4cf-0b16fb44e482" class="bulleted-list"><li style="list-style-type:disc"><code>git pull origin [branchname]</code>  - to make sure you’re up to date</li></ul><ul id="1b508e08-ffc9-4373-a03c-d6130c4e7500" class="bulleted-list"><li style="list-style-type:disc"><code>git push origin [branchname]</code> -  pushing changes to the remote</li></ul></details></li></ul><p id="0743bf68-58f3-4b17-bbee-9512585cec7c" class="">
+</p><ul id="70d87225-8ae9-4ddb-82ad-f263d25a0b1e" class="toggle"><li><details open=""><summary><span style="border-bottom:0.05em solid"><strong>Branching and Stuff:</strong></span></summary><ul id="389249c6-46c8-4a9d-88d3-60febd3c91aa" class="bulleted-list"><li style="list-style-type:disc"><code>git branch</code> -  shows all branch</li></ul><ul id="40fc2ae0-45d2-4f8a-9881-69ce247e6638" class="bulleted-list"><li style="list-style-type:disc"><code>git branch [branchname]</code> -  create the branch with the given branch name  </li></ul><ul id="4cd9074a-d4ea-4049-8656-ec84c95d22d3" class="bulleted-list"><li style="list-style-type:disc"><code>git checkout [branchname]</code> -  switches you to that branch</li></ul></details></li></ul><p id="016e4ccf-7a96-43ce-a9ba-86902aec315e" class="">
+</p><ul id="155c993d-ee58-440f-80ac-407eef9542c4" class="toggle"><li><details open=""><summary><strong>Merging Branch with other branch:</strong></summary><ul id="755e61f3-fd83-4de3-9d8e-a212bb70d299" class="bulleted-list"><li style="list-style-type:disc"><code>git checkout master</code> -  moves to master branch</li></ul><ul id="e76449ab-5164-4b30-b7ea-8a4bf8958c7e" class="bulleted-list"><li style="list-style-type:disc"><code>git pull origin master</code> -  makes sure everything is up to date on your master branch before you merge</li></ul><ul id="7d390d5e-eb5a-458f-8db1-831d9b0778b2" class="toggle"><li><details open=""><summary><em>merge the branch -</em></summary><ul id="242db2ff-625f-4e90-a785-10e37d3ca9f6" class="bulleted-list"><li style="list-style-type:disc"><code>git branch --merged</code></li></ul><ul id="f7a95809-107f-4f90-a2c3-e6382a430eb1" class="bulleted-list"><li style="list-style-type:disc"><code>git merge [branchname]</code></li></ul></details></li></ul><ul id="b42735de-f69e-4537-891b-bd115373eaa7" class="bulleted-list"><li style="list-style-type:disc"><code>git push origin master</code> -  pushes the changes</li></ul></details></li></ul></div></details><p id="ecaf9f46-0a55-4862-a3a2-3ddfade79eec" class="">
+</p><p id="1853b77c-b5b2-4651-bfd9-1380709707f8" class="">
+</p><p id="48002226-315a-4da6-b486-228056805f18" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Terminoligies to understand:</summary><div class="indented"><h3 id="aa29f73e-8406-4dba-a744-b0e076cd6bd5" class="">Working Area :</h3><p id="c1592ec5-273c-4a8e-81d7-2fa903f4f41c" class="">   Normal folders and files not cared by Git.</p><p id="e9278ca0-4f35-4e5c-9896-ca6ba364b682" class="">                             </p><h3 id="f41d27f4-9903-4362-a113-fc28e6623fcb" class="">Tracked Area :</h3><p id="a427a8dd-fdff-4c2e-9b57-f370bf56e191" class="">   Folders and files Git knows about.</p><p id="2b180063-0046-4c71-91e0-dfa1ffa0ff14" class="">
+</p><h3 id="542537ba-f87c-408e-9730-152a5894c4f4" class="">Staging Area :</h3><p id="692bb898-16d7-4f7f-b320-0fdaedf74708" class="">   Folders and files Git will upload.</p><p id="70f73e94-ee2b-4bbd-9388-a4fdf2594f63" class=""> </p><h3 id="3a5c42d8-3671-4362-9c39-426ef10a464c" class="">Git Directory :</h3><p id="d80642e3-745c-4184-a08b-ba174c571ca8" class="">   Folders and files uploaded by Git.</p><p id="9727cfe4-ee17-4720-b1e0-854f5706f2c6" class=""><div class="indented"><p id="90fb1410-e338-4e2a-8eed-9f0061c407de" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Important Concepts</summary><div class="indented"><p id="636a437a-0367-4e7e-a13b-18056ebf6da6" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Understand Branches :</summary><div class="indented"><p id="8a5c6ad1-ef4b-42da-8250-bbbe6b78703c" class="">Git branches are an important part of version control in software development. A branch is like a separate line of development within a project. It allows multiple developers to work on different parts of the codebase without interfering with each other.</p><p id="cccb1f11-e6c0-4839-978d-ef35efcdbbf9" class="">Imagine a tree trunk with branches coming off of it. Each branch represents a different version of the codebase. Developers can work on their own branch and make changes without affecting the master branch. When they are ready, they can merge their changes back into the master branch.</p><p id="05041ec3-b2b1-413f-a3a3-a382a4fa7a64" class="">Here is an example diagram of Git branches:</p><pre id="e12d5498-c443-4099-bd31-e856323b1902" class="code code-wrap"><code>          A---B---C  (master)
+               \\\\
+                D---E  (feature)
+</code></pre><p id="2f21ed30-5660-49ce-8b6c-5bc52964adcc" class="">In this diagram, the master branch contains three commits (A, B, and C), while the feature branch contains two commits (D and E). The commit marked as C is the &quot;head&quot; of the master branch, while the commit marked as E is the &quot;head&quot; of the feature branch.</p><p id="7086819e-41f3-450b-8810-f048bc60d87a" class="">To switch between branches, you can use the <code>git checkout</code> command followed by the name of the branch you want to switch to. For example, to switch to the feature branch, you would use the command <code>git checkout feature</code>.</p><ul id="35529f97-da92-4a49-a000-6cf4e56ad139" class="toggle"><li><details open=""><summary><strong>If you don’t understand the above explanation so try to understand this : </strong></summary><p id="2894ac09-0a50-4552-8aa5-1f2e9eec2739" class="">
+</p><p id="d11b5c6b-9c60-4168-96fb-1e8aab5609f4" class="">Imagine you&#x27;re writing a story in a book. The book is your main story (or the &quot;main branch&quot;).</p><p id="e917f489-ae97-4d56-a07a-4255170d3943" class="">Now, you have an idea for a side story or a new character, but you&#x27;re not sure if it&#x27;ll be a good fit. Instead of writing it directly into the book and possibly messing up your main story, you use a separate piece of paper (a &quot;branch&quot;) to write this side story.</p><p id="02c52e6c-e7b7-4cae-aacb-587726e20ff3" class=""><strong>Branches</strong> are like these separate pieces of paper. They allow you to try out new ideas without changing the main story. If you like the changes, you can later merge (or add) the content from your branch into the main book.</p><p id="25ef4352-d239-4c10-97b4-a9be14ab355e" class="">This way, the main story remains neat and clean, while you have the freedom to experiment and make changes on the side.</p><p id="8f013edc-2e37-4710-96ec-fc7839699095" class="">
+</p></details></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Push and Pull Request :</summary><div class="indented"><h3 id="116f9f7d-b3ae-459d-9327-03210c0d3b95" class="">Push</h3><p id="2b7ba9d7-2e68-43de-86db-a5813cf22ffe" class="">When you have made changes to your local repository and want to upload those changes to the remote repository, you need to push them. Here is the process for pushing changes:</p><ol type="1" id="4e2a83b1-5457-4fac-b96d-878a905a1579" class="numbered-list" start="1"><li>Make changes to your local repository using Git commands (such as <code>git add</code> and <code>git commit</code>).</li></ol><ol type="1" id="42b0a43a-044a-4878-b10f-5ef80220579e" class="numbered-list" start="2"><li>Use the <code>git push</code> command to upload your changes to the remote repository.</li></ol><ol type="1" id="ad3a76d4-ebe9-4ac3-b9d2-877cbf3c9394" class="numbered-list" start="3"><li>If you are pushing changes to a branch that does not exist on the remote repository, use the <code>git push --set-upstream origin [branch name]</code> command to create the branch on the remote repository.</li></ol><h3 id="ba90fdbc-8758-4a4f-8f77-d3a592b08323" class="">Pull Request</h3><p id="daf27aa9-6040-437f-bc34-04a5f970de55" class="">A pull request is a way to propose changes to a repository hosted on GitHub. Here is the process for creating a pull request:</p><ol type="1" id="e0a2752e-4f6c-4ace-9891-231074a5c915" class="numbered-list" start="1"><li>Fork the repository you want to make changes to.</li></ol><ol type="1" id="624f340e-fca1-4a20-a74a-5d0e1b3e4fc2" class="numbered-list" start="2"><li>Clone the forked repository to your local machine using the <code>git clone [repository URL]</code> command.</li></ol><ol type="1" id="2e6313aa-f189-4128-9fac-cfc2aabc7f2d" class="numbered-list" start="3"><li>Create a new branch for your changes using the <code>git branch [branch name]</code> command and switch to that branch using the <code>git checkout [branch name]</code> command.</li></ol><ol type="1" id="a7189379-9e57-4e34-b258-e807e3561a39" class="numbered-list" start="4"><li>Make changes to the files in your local repository using Git commands (such as <code>git add</code> and <code>git commit</code>).</li></ol><ol type="1" id="4a95d189-70dd-4afd-96ce-2b71105b3769" class="numbered-list" start="5"><li>Push your changes to the remote repository using the <code>git push</code> command.</li></ol><ol type="1" id="2060bf33-c56e-4cba-83e9-346cafaea5e8" class="numbered-list" start="6"><li>Go to the repository on GitHub and click the &quot;New pull request&quot; button.</li></ol><ol type="1" id="29b4d690-74b4-4f1e-b7f1-2f98591bd538" class="numbered-list" start="7"><li>Select the branch you made your changes on as the &quot;compare&quot; branch and the branch you want to merge your changes into as the &quot;base&quot; branch.</li></ol><ol type="1" id="51d3275b-f459-4a32-a405-a7d5649a50e2" class="numbered-list" start="8"><li>Add a title and description for your pull request and click the &quot;Create pull request&quot; button.</li></ol><p id="cbe09694-41cc-4af3-81b3-898f3faa8eb1" class="">After you create a pull request, other contributors to the repository can review your changes and leave comments. Once the changes are approved by Owner, they can be merged into the base branch.</p><p id="d0ad6200-3248-449d-870f-8e84fdf2fdb8" class="">
+</p><ul id="ab9c7cd8-073a-4436-888f-880aa3c0b50e" class="toggle"><li><details open=""><summary>I<strong>f you don’t understand with the above explanation so just try to understand this :</strong></summary><p id="b706562c-3c0e-4e2b-ba11-d9da024bafb0" class="">Imagine a shared project folder where multiple people can add or change files.</p><ul id="8b48a2a3-910c-4470-98f5-a100295e8f1f" class="bulleted-list"><li style="list-style-type:disc"><strong>Push</strong>: It&#x27;s like when you have a new file or an updated one, and you want to put it into that shared project folder for everyone to see.</li></ul><ul id="131a4bc5-0cb4-4435-adff-3f45f4beb501" class="bulleted-list"><li style="list-style-type:disc"><strong>Pull Request</strong>: It&#x27;s like saying, &quot;Hey, I&#x27;ve made some changes. Can someone check them before they go into the main project folder?&quot; It&#x27;s a way to discuss and review changes before they&#x27;re added to the main project.</li></ul></details></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Conflicts :</summary><div class="indented"><p id="5a10a01f-3007-4783-bf25-75f6c6a71f5b" class="">In Git, a conflict occurs when two or more people are editing the same file at the same time, and their changes conflict with each other. When two people try to merge their changes together, Git may not be able to do so automatically because it doesn&#x27;t know which version to use.</p><p id="6ec2556a-bcc0-4d91-9e3b-d8393a7700ee" class="">To resolve a conflict, the conflicting parties need to manually edit the file to remove the conflicting changes. Once the file has been edited, it needs to be committed to the repository to resolve the conflict.</p><p id="b65309ee-2e0f-4aec-b201-a145467c3de1" class="">Conflicts can be avoided by communicating with other contributors and coordinating changes. It&#x27;s also important to regularly pull changes from the remote repository to ensure that you are working with the latest version of the codebase.</p><p id="18f20b94-03d1-452c-af32-b88ab2dea9fb" class=""><strong>Note</strong>: To avoid conflicts always pull that branch in which you are working to work in up to date state.</p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">GitHub Issues :</summary><div class="indented"><p id="d74ab9e9-9b99-48e2-a74c-4e856f6b8366" class="">GitHub Issues is like a to-do list for software projects on GitHub. People can report problems, suggest new features, or discuss changes they&#x27;d like to see. It helps developers keep track of what needs to be done, what&#x27;s in progress, and what&#x27;s already finished.</p></div></details></div></details></div></p><p id="d974850e-aa74-4899-aa33-1f0f8a0377eb" class="">
+</p><p id="49262b8c-a863-4ad9-a355-03020e7a79b7" class="">
+</p></div></details><p id="f3d4bb56-2c80-4678-9ce4-05951597887b" class="">
+</p><h3 id="d2089d99-dc3e-4afc-9dd1-d8a3bbd10675" class="">    </h3><p id="82f17dce-964c-40ac-9441-4d29f05d6ca1" class="">
+</p></div></details><p id="7bb6d40f-6c90-42cc-a932-acf551334944" class="">
+</p></div></article></body></html>
